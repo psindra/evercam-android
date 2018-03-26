@@ -66,8 +66,9 @@ import io.evercam.androidapp.tasks.LoadCameraListTask;
 import io.evercam.androidapp.utils.Commons;
 import io.evercam.androidapp.utils.Constants;
 import io.evercam.androidapp.utils.PrefsManager;
+import com.squareup.picasso.Picasso;
 import io.intercom.android.sdk.Intercom;
-import io.intercom.com.squareup.picasso.Picasso;
+//import io.intercom.com.squareup.picasso.Picasso;
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
@@ -84,7 +85,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
 
     public CustomProgressDialog reloadProgressDialog;
     private RelativeLayout actionButtonLayout;
-    private FloatingActionButton manuallyAddButton;
+//    private FloatingActionButton manuallyAddButton;
     private FloatingActionButton scanButton;
     private int lastScrollY;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -137,7 +138,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
         ObservableScrollView observableScrollView = (ObservableScrollView) findViewById(R.id.cameras_scroll_view);
         observableScrollView.setScrollViewCallbacks(this);
 
-        setUpActionButtons();
+//        setUpActionButtons();
 
         initDataCollectionObjects();
 
@@ -253,6 +254,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             addAllCameraViews(true, true);
             reloadFromDatabase = false;
         }
+        Intercom.client().handlePushMessage();
     }
 
     private boolean isUserChanged() {
@@ -351,8 +353,8 @@ public class CamerasActivity extends ParentAppCompatActivity implements
     private void initNavigationDrawer() {
         mNavSettingsItemLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_settings_layout);
         mNavFeedbackItemLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_feedback_layout);
-        mNavScanLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_scan_layout);
-        mNavExploreLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_explore_layout);
+//        mNavScanLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_scan_layout);
+//        mNavExploreLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_explore_layout);
         mNavTitleLayout = (FrameLayout) findViewById(R.id.navigation_drawer_title_layout);
         mNavBodyScrollView = (ScrollView) findViewById(R.id.drawer_body_scroll_view);
         mNavBodyAccountView = (FrameLayout) findViewById(R.id.drawer_body_account_view);
@@ -364,7 +366,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
         mTriangleImageView = (ImageView) findViewById(R.id.image_view_triangle);
         mCircleImageView = (CircleImageView) findViewById(R.id.navigation_drawer_account_profile_image);
         mAccountListView = (ListView) findViewById(R.id.list_view_account_email);
-        FrameLayout offlineLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_offline_layout);
+        /*FrameLayout offlineLayout = (FrameLayout) findViewById(R.id.navigation_drawer_items_offline_layout);
         final CheckBox offlineSwitch = (CheckBox) findViewById(R.id.checkbox_offline);
         offlineSwitch.setChecked(PrefsManager.showOfflineCameras(this));
 
@@ -382,7 +384,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             public void onClick(View v) {
                 offlineSwitch.setChecked(!offlineSwitch.isChecked());
             }
-        });
+        });*/
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -420,8 +422,8 @@ public class CamerasActivity extends ParentAppCompatActivity implements
         // Nav Drawer item click listener
         mNavSettingsItemLayout.setOnClickListener(this);
         mNavFeedbackItemLayout.setOnClickListener(this);
-        mNavScanLayout.setOnClickListener(this);
-        mNavExploreLayout.setOnClickListener(this);
+//        mNavScanLayout.setOnClickListener(this);
+//        mNavExploreLayout.setOnClickListener(this);
         mNavAddAccountLayout.setOnClickListener(this);
         mNavManageAccountLayout.setOnClickListener(this);
 
@@ -469,7 +471,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
 
             mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
             Bundle bundle = new Bundle();
-            bundle.putString("Manage Account", "Click on manage account");
+            bundle.putString("Manage_Account", "Click on manage account");
             mFirebaseAnalytics.logEvent("Menu", bundle);
 /*
             EvercamPlayApplication.sendEventAnalytics(this, R.string.category_menu, R.string.action_manage_account, R.string.label_account);
@@ -508,7 +510,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
         actionButtonLayout = (RelativeLayout) findViewById(R.id
                 .action_button_layout);
         final FloatingActionsMenu actionMenu = (FloatingActionsMenu) findViewById(R.id.add_action_menu);
-        manuallyAddButton = (FloatingActionButton) findViewById(R.id.add_action_button_manually);
+//        manuallyAddButton = (FloatingActionButton) findViewById(R.id.add_action_button_manually);
         scanButton = (FloatingActionButton) findViewById(R.id.add_action_button_scan);
 
         actionMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu
@@ -533,19 +535,19 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             }
         });
 
-        manuallyAddButton.setOnClickListener(new OnClickListener() {
+/*        manuallyAddButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 mFirebaseAnalytics = FirebaseAnalytics.getInstance(CamerasActivity.this);
                 Bundle bundle = new Bundle();
-                bundle.putString("Add Camera", "Click on add camera in menu, and choose manually.");
+                bundle.putString("Add_Camera", "Click on add camera in menu, and choose manually.");
                 mFirebaseAnalytics.logEvent("Menu", bundle);
-/*
+*//*
                 EvercamPlayApplication.sendEventAnalytics(CamerasActivity.this, R.string
                         .category_menu, R.string.action_add_camera, R.string
                         .label_add_camera_manually);
-*/
+*//*
                 //TODO: Make the decision of using which design for adding camera
                 startActivityForResult(new Intent(CamerasActivity.this, AddCameraActivity
                         .class), Constants.REQUEST_CODE_ADD_CAMERA);
@@ -554,14 +556,14 @@ public class CamerasActivity extends ParentAppCompatActivity implements
 
                 actionMenu.collapse();
             }
-        });
+        });*/
         scanButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mFirebaseAnalytics = FirebaseAnalytics.getInstance(CamerasActivity.this);
                 Bundle bundle = new Bundle();
-                bundle.putString("Add Camera", "Click on add camera in menu, and choose scan.");
+                bundle.putString("Add_Camera", "Click on add camera in menu, and choose scan.");
                 mFirebaseAnalytics.logEvent("Menu", bundle);
 /*
                 EvercamPlayApplication.sendEventAnalytics(CamerasActivity.this, R.string
@@ -899,7 +901,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
 
     private void showShowcaseView(boolean onlyHasDemoCamera) {
         if (onlyHasDemoCamera) showDemoCamShowcaseView();
-        else showAddCameraShowcaseView();
+//        else showAddCameraShowcaseView();
     }
 
     private MaterialShowcaseView.Builder applyCommonConfigs(MaterialShowcaseView.Builder builder) {
@@ -913,7 +915,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
         return builder;
     }
 
-    private void showAddCameraShowcaseView() {
+    /*private void showAddCameraShowcaseView() {
         MaterialShowcaseView.Builder builder = new MaterialShowcaseView.Builder(this, false);
         applyCommonConfigs(builder);
         builder.setTarget(manuallyAddButton)
@@ -932,7 +934,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
                 })
                 .show();
     }
-
+*/
     private void showDemoCamShowcaseView() {
 
         io.evercam.androidapp.custom.FlowLayout cameraLineLayout =
@@ -954,7 +956,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
                         @Override
                         public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
                             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-                            showAddCameraShowcaseView();
+//                            showAddCameraShowcaseView();
                         }
                     })
                     .show();
@@ -983,13 +985,13 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             if (lastScrollY != 0) {
                 if (toolbarIsShown()) {
                     hideToolbar();
-                    showActionButtons(false);
+//                    showActionButtons(false);
                 }
             }
         } else if (scrollState == ScrollState.DOWN) {
             if (toolbarIsHidden()) {
                 showToolbar();
-                showActionButtons(true);
+//                showActionButtons(true);
             }
         }
     }

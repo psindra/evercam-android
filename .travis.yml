@@ -10,13 +10,13 @@ env:
 android:
   components:
     - tools
-    - android-23
-    - build-tools-23.0.3
+    - android-26
+    - build-tools-26.0.2
     - extra-google-google_play_services
     - extra-android-support
     - extra-android-m2repository
     - extra-google-m2repository
-    - sys-img-armeabi-v7a-android-21
+    - sys-img-armeabi-v7a-android-26
 
 sudo: required
 

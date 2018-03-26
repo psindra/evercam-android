@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.nineoldandroids.view.ViewHelper;
 
@@ -160,11 +161,13 @@ public class ParentAppCompatActivity extends AppCompatActivity {
     }
 
     protected boolean isPlayServicesAvailable() {
-        return GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS;
+
+        return GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS;
+//        return GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS;
     }
 
     protected void sendRegistrationIdToIntercomBackend(String regId) {
-        Intercom.client().setupGCM(regId, R.drawable.icon_evercam_trans);
+//        Intercom.client().setupGCM(regId, R.drawable.icon_evercam_trans);
     }
 
     protected void hideSoftKeyboard() {

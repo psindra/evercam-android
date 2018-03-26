@@ -26,6 +26,7 @@ import io.evercam.androidapp.utils.Constants;
 import io.evercam.androidapp.utils.DataCollector;
 import io.evercam.androidapp.utils.PrefsManager;
 import io.fabric.sdk.android.Fabric;
+import io.intercom.android.sdk.Intercom;
 
 /*
  * Main starting activity. 
@@ -65,6 +66,7 @@ public class MainActivity extends ParentAppCompatActivity {
 
         launch();
     }
+
 
     @Override
     protected void onRestart() {

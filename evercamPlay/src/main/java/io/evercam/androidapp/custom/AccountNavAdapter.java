@@ -13,7 +13,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.evercam.androidapp.R;
 import io.evercam.androidapp.dto.AppUser;
 import io.evercam.androidapp.utils.Commons;
-import io.intercom.com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;
+//import io.intercom.com.squareup.picasso.Picasso;
 
 public class AccountNavAdapter extends ArrayAdapter<AppUser> {
 

@@ -257,7 +257,7 @@ public class EditCameraLocationActivity extends ParentAppCompatActivity implemen
             try {
                 String latitude = String.valueOf(tappedLatLng.latitude);
                 String longitude = String.valueOf(tappedLatLng.longitude);
-                jsonResponse = Unirest.get("https://maps.googleapis.com/maps/api/timezone/json?location=" + latitude + "," + longitude + "&timestamp=1482151170&key=AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0")
+                jsonResponse = Unirest.get("https://maps.googleapis.com/maps/api/timezone/json?location=" + latitude + "," + longitude + "&timestamp=1482151170&key=AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0_Gy_qj8")
                         .asJson();
                 String str = jsonResponse.getBody().toString();
                 Log.v("json First", str);

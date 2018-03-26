@@ -21,7 +21,7 @@
 
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
 
-    <include layout="@layout/float_action_button" />
+    <!--<include layout="@layout/float_action_button" />-->
 
     <include
         layout="@layout/tool_bar"

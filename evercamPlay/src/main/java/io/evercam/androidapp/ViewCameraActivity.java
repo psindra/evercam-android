@@ -176,7 +176,7 @@ public class ViewCameraActivity extends ParentAppCompatActivity implements OnMap
 
             HttpResponse<JsonNode> jsonResponse = null;
             try {
-                jsonResponse = Unirest.get("https://maps.googleapis.com/maps/api/timezone/json?location=53.350140,-6.266155&timestamp=1482151170&key=AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0")
+                jsonResponse = Unirest.get("https://maps.googleapis.com/maps/api/timezone/json?location=53.350140,-6.266155&timestamp=1482151170&key=AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0_Gy_qj8")
                         .asJson();
                 String str = jsonResponse.getBody().toString();
                 Log.v("json First",str);

@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <FrameLayout
+                <!--<FrameLayout
                     android:id="@+id/navigation_drawer_items_offline_layout"
                     style="@style/NavDrawerRowLayout.Main">
 
@@ -99,15 +99,15 @@
                         android:layout_marginLeft="@dimen/nav_drawer_vertical_keyline_icon_left"
                         android:text="@string/nav_drawer_offline" />
 
-                    <!--<android.support.v7.widget.SwitchCompat-->
-                        <!--android:id="@+id/switch_compat_offline"-->
-                        <!--app:theme="@style/SwitchButtonTheme"-->
-                        <!--android:paddingLeft="10dp"-->
-                        <!--android:paddingRight="10dp"-->
-                        <!--android:layout_gravity="center_vertical|end"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="match_parent" />-->
-                    <!---->
+                    &lt;!&ndash;<android.support.v7.widget.SwitchCompat&ndash;&gt;
+                        &lt;!&ndash;android:id="@+id/switch_compat_offline"&ndash;&gt;
+                        &lt;!&ndash;app:theme="@style/SwitchButtonTheme"&ndash;&gt;
+                        &lt;!&ndash;android:paddingLeft="10dp"&ndash;&gt;
+                        &lt;!&ndash;android:paddingRight="10dp"&ndash;&gt;
+                        &lt;!&ndash;android:layout_gravity="center_vertical|end"&ndash;&gt;
+                        &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;
+                        &lt;!&ndash;android:layout_height="match_parent" />&ndash;&gt;
+                    &lt;!&ndash;&ndash;&gt;
                     <CheckBox
                         android:id="@+id/checkbox_offline"
                         android:paddingLeft="10dp"
@@ -116,11 +116,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                </FrameLayout>
+                </FrameLayout>-->
 
-                <include layout="@layout/divider_navigation_drawer" />
+                <!--<include layout="@layout/divider_navigation_drawer" />-->
 
-                <FrameLayout
+               <!-- <FrameLayout
                     android:id="@+id/navigation_drawer_items_scan_layout"
                     style="@style/NavDrawerRowLayout.Main.Clickable">
 
@@ -136,10 +136,10 @@
                         style="@style/NavDrawerRowItemText.Margin"
                         android:text="@string/nav_drawer_scan" />
 
-                </FrameLayout>
+                </FrameLayout>-->
 
 
-                <FrameLayout
+                <!--<FrameLayout
                     android:id="@+id/navigation_drawer_items_explore_layout"
                     style="@style/NavDrawerRowLayout.Main.Clickable">
 
@@ -155,7 +155,7 @@
                         style="@style/NavDrawerRowItemText.Margin"
                         android:text="@string/nav_drawer_item_explore" />
 
-                </FrameLayout>
+                </FrameLayout>-->
 
                 <FrameLayout
                     android:id="@+id/navigation_drawer_items_settings_layout"

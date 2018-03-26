@@ -13,3 +13,9 @@
 # Keep line numbers for Crashlytics bug reports
 -keepattributes SourceFile,LineNumberTable
 
+-ignorewarnings
+
+-keep class * {
+    public private *;
+}
+

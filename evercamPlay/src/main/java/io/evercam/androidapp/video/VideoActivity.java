@@ -557,7 +557,7 @@ public class VideoActivity extends ParentAppCompatActivity
                     //Calling firebase analytics
                     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
                     Bundle bundle = new Bundle();
-                    bundle.putString("Evercam_Shortcut_Creation", "Home shortcut created successfully");
+                    bundle.putString("Evercam_ShortcutCreation", "Home shortcut created successfully");
                     mFirebaseAnalytics.logEvent("Home_Shortcut", bundle);
 
                     Bitmap bitmap = getBitmapFromImageView(imageView);
@@ -1341,6 +1341,7 @@ public class VideoActivity extends ParentAppCompatActivity
     }
 
     private void launchJpgRunnable() {
+        Log.d("CameraId",evercamCamera.getCameraId());
         mLiveViewRunnable = new LiveViewRunnable(this, evercamCamera.getCameraId());
         loadJpgView();
     }

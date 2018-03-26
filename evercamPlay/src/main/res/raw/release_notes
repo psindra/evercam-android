@@ -1,8 +1,31 @@
 <h4>Evercam IP Camera Viewer</h4>
 
-<h5>2.1.1</h5>
+<h5>2.1.4</h5>
 <ul>
-    <li>- Sign up screen updated designs<br/></li>
+    <li>- Removed camera add feature.<br/></li>
+    <li>- Removed public cameras.<br/></li>
+    <li>- Removed scan for cameras feature.<br/></li>
+</ul>
+<br/>
+
+
+<b>Version 2.1.3</b>
+<ul>
+    <li><br/>- Bug fixes.<br/></li>
+    <li>- Intercom notification issue fixed.<br/></li>
+    <li>- All dependencies are updated.<br/></li>
+</ul>
+<br/>
+
+<b>Version 2.1.2</b>
+<ul>
+    <li><br/>- Application icon updated.<br/></li>
+</ul>
+<br/>
+
+<b>Version 2.1.1</b>
+<ul>
+    <li><br/>- Sign up screen updated designs<br/></li>
 </ul>
 <br/>
 

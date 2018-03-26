@@ -10,18 +10,27 @@ import android.util.Log;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.phoenixframework.channels.Channel;
-import org.phoenixframework.channels.Envelope;
-import org.phoenixframework.channels.IMessageCallback;
-import org.phoenixframework.channels.ISocketCloseCallback;
-import org.phoenixframework.channels.Socket;
+//import org.phoenixframework.channels.Channel;
+//import org.phoenixframework.channels.ChannelEvent;
+//import org.phoenixframework.channels.Envelope;
+//import org.phoenixframework.channels.IMessageCallback;
+//import org.phoenixframework.channels.ISocketCloseCallback;
+//import org.phoenixframework.channels.Socket;
+//import org.phoenixframework.channels.*;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import io.evercam.API;
+import io.evercam.androidapp.PhoenixChannel.Channel;
+import io.evercam.androidapp.PhoenixChannel.ChannelEvent;
+import io.evercam.androidapp.PhoenixChannel.Envelope;
+import io.evercam.androidapp.PhoenixChannel.IMessageCallback;
+import io.evercam.androidapp.PhoenixChannel.ISocketCloseCallback;
+import io.evercam.androidapp.PhoenixChannel.Socket;
 import io.evercam.androidapp.utils.Commons;
 import io.evercam.androidapp.video.VideoActivity;
+
 
 public class LiveViewRunnable implements Runnable {
 
@@ -89,6 +98,12 @@ public class LiveViewRunnable implements Runnable {
                     });
 
             mChannel.on(EVENT_SNAPSHOT_TAKEN, new IMessageCallback() {
+
+//                @Override
+//                public void onMessage(Envelope envelope) {
+//                    System.out.println("NEW MESSAGE: " + envelope.toString());
+//                }
+
                 @Override
                 public void onMessage(Envelope envelope) {
 
@@ -105,6 +120,7 @@ public class LiveViewRunnable implements Runnable {
                     }
                     Log.d(TAG, "Timestamp: " + envelope.getPayload().get(ENVELOPE_KEY_TIMESTAMP).toString());
 
+                    Log.d(TAG, "Payload: " + envelope.getPayload());
                     String base64String = envelope.getPayload().get(ENVELOPE_KEY_IMAGE).toString();
                     //Log.d(TAG, "Data: " + base64String);
 
@@ -122,14 +138,28 @@ public class LiveViewRunnable implements Runnable {
                         }
                     });
                 }
-            });
 
-            mChannel.onClose(new IMessageCallback() {
+            });
+            mChannel.on(ChannelEvent.CLOSE.getPhxEvent(), new IMessageCallback() {
                 @Override
                 public void onMessage(Envelope envelope) {
-                    Log.d(TAG, "Channel Closed");
+                    System.out.println("CLOSED: " + envelope.toString());
                 }
             });
+
+            mChannel.on(ChannelEvent.ERROR.getPhxEvent(), new IMessageCallback() {
+                @Override
+                public void onMessage(Envelope envelope) {
+                    System.out.println("ERROR: " + envelope.toString());
+                }
+            });
+
+//            mChannel.onClose(new IMessageCallback() {
+//                @Override
+//                public void onMessage(Envelope envelope) {
+//                    Log.d(TAG, "Channel Closed");
+//                }
+//            });
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
