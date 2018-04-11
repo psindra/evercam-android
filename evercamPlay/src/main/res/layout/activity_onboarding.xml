@@ -23,19 +23,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_welcome_signup"
             style="@style/ButtonLight.Lowercase"
+            android:layout_width="0dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
-            android:text="@string/welcome_create_account"
-            android:layout_width="0dp"
             android:layout_weight="1"
-            android:id="@+id/btn_welcome_signup"/>
+            android:text="@string/welcome_create_account"
+            android:visibility="gone" />
 
         <Button
             android:text="@string/welcome_sign_in"
             android:id="@+id/btn_welcome_login"
             android:background="@drawable/btn_selector"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"

@@ -3,11 +3,15 @@ package io.evercam.androidapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -103,6 +107,15 @@ public class LoginActivity extends ParentAppCompatActivity {
             }
         });
         hideLogoIfNecessary();
+
+        TextView mBox = (TextView) findViewById(R.id.infoTextView);
+        Spannable word = new SpannableString("To register to view your camera please follow the link in your email invitation, or contact your account manager or ");
+        word.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.black_login)), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mBox.setText(word);
+        Spannable word1 = new SpannableString("info@evercam.io");
+        word1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue_login)), 0, word1.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mBox.append(word1);
+
     }
 
     /**

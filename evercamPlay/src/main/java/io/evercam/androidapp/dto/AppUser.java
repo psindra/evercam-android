@@ -13,6 +13,7 @@ public class AppUser {
     private boolean isDefault = false;
     private String apiKey = "";
     private String apiId = "";
+    private String intercom_hmac_android = "";
 
     public AppUser() {
 
@@ -24,6 +25,11 @@ public class AppUser {
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
         setCountry(user.getCountry());
+        setIntercom_hmac_android(user.get_intercom_hmac_android());
+    }
+
+    public String getIntercom_hmac_android(){
+        return intercom_hmac_android;
     }
 
     public String getUsername() {
@@ -44,6 +50,10 @@ public class AppUser {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void setIntercom_hmac_android(String intercom_hmac_android){
+        this.intercom_hmac_android = intercom_hmac_android;
     }
 
     public int getId() {
@@ -111,6 +121,7 @@ public class AppUser {
                 ", isDefault=" + isDefault +
                 ", apiKey='" + apiKey + '\'' +
                 ", apiId='" + apiId + '\'' +
+                ", intercom_hmac_android='" + intercom_hmac_android + '\'' +
                 '}';
     }
 }
