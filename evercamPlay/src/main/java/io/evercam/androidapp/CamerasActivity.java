@@ -33,6 +33,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -459,7 +460,12 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             startActivityForResult(new Intent(CamerasActivity.this, CameraPrefsActivity.class),
                     Constants.REQUEST_CODE_SHOW_GUIDE);
         } else if (view == mNavFeedbackItemLayout) {
-            Intercom.client().displayConversationsList();
+            if (AppData.defaultUser.getIntercom_hmac_android().equals("")){
+                Toast.makeText(this, "Please sign out and login again to avail this feature.", Toast.LENGTH_SHORT).show();
+            }else{
+                Intercom.client().displayConversationsList();
+            }
+
         } else if (view == mNavScanLayout) {
             startActivityForResult(new Intent(CamerasActivity.this, ScanActivity.class),
                     Constants.REQUEST_CODE_ADD_CAMERA);

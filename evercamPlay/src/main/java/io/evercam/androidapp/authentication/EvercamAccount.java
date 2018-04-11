@@ -24,6 +24,7 @@ public class EvercamAccount {
     public static final String KEY_IS_DEFAULT = "isDefault";
     public static final String KEY_FIRSTNAME = "firstName";
     public static final String KEY_LASTNAME = "lastName";
+    public static final String KEY_INTERCOM_HMAC   = "intercom_hmac_android";
     private final String TAG = "EvercamAccount";
     private final String TRUE = "true";
 
@@ -45,6 +46,7 @@ public class EvercamAccount {
         mAccountManager.setUserData(account, KEY_COUNTRY, newUser.getCountry());
         mAccountManager.setUserData(account, KEY_FIRSTNAME, newUser.getFirstName());
         mAccountManager.setUserData(account, KEY_LASTNAME, newUser.getLastName());
+        mAccountManager.setUserData(account, KEY_INTERCOM_HMAC, newUser.getIntercom_hmac_android());
         mAccountManager.setUserData(account, KEY_IS_DEFAULT, String.valueOf(newUser.getIsDefault
                 ()));
 
@@ -116,6 +118,7 @@ public class EvercamAccount {
         String country = mAccountManager.getUserData(account, KEY_COUNTRY);
         String firstName = mAccountManager.getUserData(account, KEY_FIRSTNAME);
         String lastName = mAccountManager.getUserData(account, KEY_LASTNAME);
+        String intercom_hmac_android = mAccountManager.getUserData(account, KEY_INTERCOM_HMAC);
 
         String isDefaultString = mAccountManager.getUserData(account, KEY_IS_DEFAULT);
 
@@ -126,6 +129,7 @@ public class EvercamAccount {
         appUser.setCountry(country);
         appUser.setFirstName(firstName);
         appUser.setLastName(lastName);
+        appUser.setIntercom_hmac_android(intercom_hmac_android);
 
         if (isDefaultString != null && isDefaultString.equals(TRUE)) {
             appUser.setIsDefault(true);

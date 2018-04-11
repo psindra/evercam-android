@@ -6,7 +6,7 @@
     <string name="user_agent_suffix">io.evercam.androidapp/1.0</string>
     <string name="demo_camera_id">evercam-remembrance-camera</string>
 
-    <string name="google_api_key_maps">AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0_Gy_qj8</string>
+    <string name="google_api_key_maps">AIzaSyAXwqGkwI87v4YoSGCq0FStNXr0</string>
     <string name="intercom_gcm_sender_id">461613501728</string>
 
     <!-- General -->

@@ -21,7 +21,7 @@
     <string name="prefix_invalid">Invalid</string>
     <string name="prefix_no_user">No user</string>
     <string name="forgot_password">Forgot Password?</string>
-
+    <string name="information_signup">To register to view your camera please follow the link in your email invitation, or contact your account manager or info@evercam.io</string>
     <!-- Sign Up Strings -->
     <string name="login_progress_signing_up">Creating account&#8230;</string>
     <string name="firstname_colon">First name:</string>

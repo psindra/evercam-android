@@ -98,8 +98,10 @@ public class EvercamCamera {
             thumbnailUrl = camera.getThumbnailUrl();
             hlsUrl = camera.getProxyUrl().getHls();
 
-            latitude        =       camera.getLocation().getLat();
-            longitude       =       camera.getLocation().getLng();
+            /*latitude        =       camera.getLocation().getLat();
+            longitude       =       camera.getLocation().getLng();*/
+            latitude        =       camera.getLat();
+            longitude       =       camera.getLng();
 
             isDiscoverable = camera.isDiscoverable();
             isPublic = camera.isPublic();

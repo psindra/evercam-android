@@ -46,4 +46,8 @@
     <color name="floating_button">@color/evercam_blue</color>
     <color name="floating_button_pressed">@color/evercam_blue_pressed</color>
     <color name="account_icon_tint">@color/light_gray_600</color>
+
+    <!-- Login screen -->
+    <color name="black_login">#4B4B4B</color>
+    <color name="blue_login">#418CC8</color>
 </resources>

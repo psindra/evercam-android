@@ -64,6 +64,7 @@ public class ParentAppCompatActivity extends AppCompatActivity {
 
     public static void registerUserWithIntercom(AppUser user) {
         if (user != null) {
+            Intercom.client().setUserHash(user.getIntercom_hmac_android());
             Intercom.client().registerIdentifiedUser(new Registration().withUserId(user.getUsername()));
         }
 

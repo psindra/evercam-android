@@ -64,14 +64,31 @@
             android:id="@+id/signupLink"
             style="@style/LinkText"
             android:layout_alignParentBottom="true"
-            android:text="@string/create_account" />
+            android:text="@string/create_account"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/forgetPasswordLink"
             android:layout_below="@+id/login_form_layout"
-            android:layout_above="@+id/signupLink"
             style="@style/LinkText"
             android:text="@string/forgot_password" />
+
+        <TextView
+            android:id="@+id/infoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/forgetPasswordLink"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="10dp"
+            android:background="#E6E6F0"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="@string/information_signup"
+            android:textSize="17sp"
+            android:fontFamily="sans-serif"/>
+
 
     </android.support.percent.PercentRelativeLayout>
 
