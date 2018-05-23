@@ -460,10 +460,20 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             startActivityForResult(new Intent(CamerasActivity.this, CameraPrefsActivity.class),
                     Constants.REQUEST_CODE_SHOW_GUIDE);
         } else if (view == mNavFeedbackItemLayout) {
-            if (AppData.defaultUser.getIntercom_hmac_android().equals("")){
-                Toast.makeText(this, "Please sign out and login again to avail this feature.", Toast.LENGTH_SHORT).show();
-            }else{
-                Intercom.client().displayConversationsList();
+            try{
+                if (AppData.defaultUser.getIntercom_hmac_android() != null){
+                    if (AppData.defaultUser.getIntercom_hmac_android().equals("")){
+                        Toast.makeText(this, "Please sign out and login again to avail this feature.", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intercom.client().displayConversationsList();
+                    }
+                }else{
+                    Toast.makeText(this, "Please sign out and login again to avail this feature.", Toast.LENGTH_SHORT).show();
+                }
+
+            }catch (Exception e){
+                Log.e(TAG, e.toString());
+                EvercamPlayApplication.sendCaughtException(this, e);
             }
 
         } else if (view == mNavScanLayout) {
