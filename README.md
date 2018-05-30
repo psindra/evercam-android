@@ -1,5 +1,5 @@
 
-# Evercam for Android [![Build Status][travis-image]][travis-url] [![API][api-image]][api-url] [![Dependency Status][dependency-status-image]][dependency-status-url]  
+# Evercam for Android [![Build Status][travis-image]][travis-url] [![API][api-image]][api-url] 
 
 Evercam allows connect your own IP cameras, public webcams and any Android devices that you use as an IP camera. It connects you to Evercam dashboard so that you can see all your cameras on your desktop as well. 
 
@@ -47,6 +47,3 @@ Any questions or suggestions around Evercam, drop us a line: http://www.evercam.
 
 [api-url]: https://android-arsenal.com/api?level=14
 [api-image]: https://img.shields.io/badge/API-14%2B-blue.svg?style=flat
-
-[dependency-status-url]: https://www.versioneye.com/user/projects/56701f3210799700300001c3
-[dependency-status-image]: https://www.versioneye.com/user/projects/56701f3210799700300001c3/badge.svg
