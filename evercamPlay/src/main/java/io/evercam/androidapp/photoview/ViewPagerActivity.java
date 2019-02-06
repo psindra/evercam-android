@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +29,7 @@ import io.evercam.androidapp.custom.CustomToast;
 import io.evercam.androidapp.custom.CustomedDialog;
 import io.evercam.androidapp.utils.Constants;
 import io.evercam.androidapp.video.VideoActivity;
-import uk.co.senab.photoview.PhotoView;
+//import uk.co.senab.photoview.PhotoView;
 
 public class ViewPagerActivity extends ParentAppCompatActivity {
     private final String TAG = "ViewPagerActivity";
