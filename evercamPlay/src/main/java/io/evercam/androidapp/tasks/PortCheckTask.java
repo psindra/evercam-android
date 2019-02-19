@@ -7,10 +7,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +15,9 @@ import java.lang.ref.WeakReference;
 
 import io.evercam.API;
 import io.evercam.androidapp.R;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class PortCheckTask extends AsyncTask<Void, Void, Boolean> {
     public enum PortType {HTTP, RTSP}

@@ -48,10 +48,7 @@ public class AccountNavAdapter extends ArrayAdapter<AppUser> {
             final String email = appUser.getEmail();
             String gravatarUrl = Commons.getGravatarUrl(email);
             emailTextView.setText(email);
-            Picasso.with(mContext).load(gravatarUrl)
-                    .noFade()
-                    .placeholder(R.drawable.ic_profile_grey)
-                    .into(profileImageView);
+            Picasso.get().load(gravatarUrl).noFade().placeholder(R.drawable.ic_profile_grey).into(profileImageView);
         }
 
         return view;

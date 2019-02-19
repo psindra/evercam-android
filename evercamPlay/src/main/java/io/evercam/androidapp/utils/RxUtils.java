@@ -1,12 +1,12 @@
 package io.evercam.androidapp.utils;
 
-import rx.Subscription;
+//import rx.Subscription;
 
 public class RxUtils {
 
-    public static void unsubscribeIfNotNull(Subscription subscription) {
+    /*public static void unsubscribeIfNotNull(Subscription subscription) {
         if (subscription != null) {
             subscription.unsubscribe();
         }
-    }
+    }*/
 }

@@ -92,7 +92,7 @@ public class ModelSelectorFragment extends Fragment {
 
                     if (!vendorName.equals(getString(R.string.vendor_other))) {
                         //Update vendor logo when vendor is selected
-                        Picasso.with(getActivity()).load(Vendor.getLogoUrl(vendorId)
+                        Picasso.get().load(Vendor.getLogoUrl(vendorId)
                         ).placeholder(android.R.color.transparent).into(vendorLogoImageView);
 
                         new RequestModelListTask(vendorId).executeOnExecutor(AsyncTask
@@ -147,8 +147,7 @@ public class ModelSelectorFragment extends Fragment {
                     modelThumbnailImageView.setImageResource(R.drawable.thumbnail_placeholder);
                 } else {
                     //Update model logo when model is selected
-                    Picasso.with(getActivity())
-                            .load(Model.getThumbnailUrl(vendorId, modelId))
+                    Picasso.get().load(Model.getThumbnailUrl(vendorId, modelId))
                             .placeholder(R.drawable.thumbnail_placeholder)
                             .into(modelThumbnailImageView);
                 }

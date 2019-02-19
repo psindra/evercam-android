@@ -341,7 +341,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             String gravatarUrl = Commons.getGravatarUrl(defaultUser.getEmail());
             mUserNameTextView.setText(defaultUser.getFirstName() + " " + defaultUser.getLastName());
             mUserEmailTextView.setText(defaultUser.getEmail());
-            Picasso.with(this).load(gravatarUrl)
+            Picasso.get().load(gravatarUrl)
                     .noFade()
                     .placeholder(R.drawable.ic_profile)
                     .into(mCircleImageView);

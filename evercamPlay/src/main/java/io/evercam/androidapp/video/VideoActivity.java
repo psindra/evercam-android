@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -73,6 +74,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import io.evercam.EvercamException;
 import io.evercam.PTZHome;
@@ -115,12 +121,18 @@ import io.evercam.androidapp.utils.Commons;
 import io.evercam.androidapp.utils.Constants;
 import io.evercam.androidapp.utils.PrefsManager;
 import io.evercam.androidapp.utils.RxUtils;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
+//import rx.Observable;
+//import rx.Observer;
+//import rx.Subscriber;
+//import rx.Subscription;
+//import rx.android.schedulers.AndroidSchedulers;
+//import rx.schedulers.Schedulers;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class VideoActivity extends ParentAppCompatActivity
@@ -202,8 +214,10 @@ public class VideoActivity extends ParentAppCompatActivity
 
     private OnSwipeTouchListener swipeTouchListener;
 
-    private Subscription mSubscription;
+//    private Subscription mSubscription;
     private FirebaseAnalytics mFirebaseAnalytics;
+//    private DisposableObserver<Bitmap> disposableObserver;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -396,7 +410,10 @@ public class VideoActivity extends ParentAppCompatActivity
     protected void onDestroy() {
         releasePlayer();
         super.onDestroy();
-        RxUtils.unsubscribeIfNotNull(mSubscription);
+        /*if (disposableObserver != null && !disposableObserver.isDisposed()) {
+            disposableObserver.dispose();
+        }*/
+//        RxUtils.unsubscribeIfNotNull(mSubscription);
     }
 
     @Override
@@ -563,9 +580,6 @@ public class VideoActivity extends ParentAppCompatActivity
                     Bitmap bitmap = getBitmapFromImageView(imageView);
                     HomeShortcut.create(getApplicationContext(), evercamCamera, bitmap);
                     CustomSnackbar.showShort(this, R.string.msg_shortcut_created);
-                    /*
-                    EvercamPlayApplication.sendEventAnalytics(this, R.string.category_shortcut, R.string.action_shortcut_create, R.string.label_shortcut_create);
-*/
 
                     getMixpanel().sendEvent(R.string.mixpanel_event_create_shortcut, new
                             JSONObject().put("Camera ID", evercamCamera.getCameraId()));
@@ -579,17 +593,6 @@ public class VideoActivity extends ParentAppCompatActivity
                     startActivityForResult(recordingIntent, Constants.REQUEST_CODE_RECORDING);
                 }
             }
-//            else if (itemId == R.id.video_menu_remove_camera) {
-//                if (evercamCamera != null) {
-//                    CustomedDialog.getConfirmDialog(VideoActivity.this, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            new DeleteCameraTask(evercamCamera.getCameraId(), VideoActivity.this,
-//                                    EnumConstants.DeleteType.DELETE_SHARE).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-//                        }
-//                    }, R.string.msg_confirm_remove_camera, R.string.remove).show();
-//                }
-//            }
         } catch (JSONException e) {
             Log.e(TAG, e.toString() + "::" + Log.getStackTraceString(e));
         }
@@ -692,10 +695,6 @@ public class VideoActivity extends ParentAppCompatActivity
             Bundle bundle = new Bundle();
             bundle.putString("Evercam_Shortcut_Used", "Use shortcut from Home");
             mFirebaseAnalytics.logEvent("Home_Shortcut", bundle);
-/*
-            EvercamPlayApplication.sendEventAnalytics(this, R.string.category_shortcut,
-                    R.string.action_shortcut_use, R.string.label_shortcut_use);
-            */
 
             try {
                 if (evercamCamera != null) {
@@ -752,7 +751,7 @@ public class VideoActivity extends ParentAppCompatActivity
         imageView.setImageDrawable(null);
 
         if (camera.hasThumbnailUrl()) {
-            Picasso.with(this).load(camera.getThumbnailUrl())
+            Picasso.get().load(camera.getThumbnailUrl())
                     .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .into(imageView);
         } else {
@@ -1041,10 +1040,52 @@ public class VideoActivity extends ParentAppCompatActivity
             public void onClick(View v) {
 
                 offlineTextLayout.startProgress();
-                mSubscription = getRefreshOfflineObservable()
-                        .subscribeOn(Schedulers.io())
+/*                Observable<Bitmap> refreshObservable = getRefreshOfflineObservable()
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread());
+                disposableObserver =refreshObservable.subscribeWith(new  DisposableObserver<Bitmap>() {
+
+                    Bitmap bitmap = null;
+                    @Override
+                    public void onNext(Bitmap bitmap) {
+                        Log.d(TAG, "On next");
+                        this.bitmap = bitmap;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "Error: " + e.getMessage());
+                        e.printStackTrace();
+                        offlineTextLayout.stopProgress();
+                        CustomToast.showInCenter(getApplicationContext(), e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "On complete");
+                        offlineTextLayout.stopProgress();
+
+                        if (bitmap != null) {
+                            imageView.setImageBitmap(bitmap);
+                            evercamCamera.setIsOnline(true);
+                            new DbCamera(getApplicationContext()).updateCamera(evercamCamera);
+                            CamerasActivity.reloadFromDatabase = true;
+
+                            startPlay();
+                        }
+                    }
+                });*/
+
+
+                getRefreshOfflineObservable()
+                        .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(getRefreshOfflineObserver());
+
+               /* mSubscription = getRefreshOfflineObservable()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(getRefreshOfflineObserver());*/
             }
         });
 
@@ -1256,7 +1297,7 @@ public class VideoActivity extends ParentAppCompatActivity
      * Observable and Observer for refreshing offline camera using RxJava
      */
 
-    private Observable<Bitmap> getRefreshOfflineObservable() {
+    /*private Observable<Bitmap> getRefreshOfflineObservable() {
         return Observable.create(new Observable.OnSubscribe<Bitmap>() {
             @Override
             public void call(Subscriber<? super Bitmap> subscriber) {
@@ -1268,8 +1309,54 @@ public class VideoActivity extends ParentAppCompatActivity
                 }
             }
         });
+    }*/
+    private Observable<Bitmap> getRefreshOfflineObservable() {
+
+        return Observable.create(new ObservableOnSubscribe<Bitmap>() {
+            @Override
+            public void subscribe(ObservableEmitter<Bitmap> emitter) throws Exception {
+                try {
+                    emitter.onNext(reloadSnaopshot(evercamCamera.getCameraId()));
+                    emitter.onComplete();
+                } catch (Exception e) {
+                    emitter.onError(e);
+                }
+            }
+        });
     }
 
+
+    private DisposableObserver<Bitmap> getRefreshOfflineObserver(){
+        return new DisposableObserver<Bitmap>() {
+            Bitmap bitmap = null;
+            @Override public void onComplete() {
+                Log.d(TAG, "On complete");
+                offlineTextLayout.stopProgress();
+
+                if (bitmap != null) {
+                    imageView.setImageBitmap(bitmap);
+                    evercamCamera.setIsOnline(true);
+                    new DbCamera(getApplicationContext()).updateCamera(evercamCamera);
+                    CamerasActivity.reloadFromDatabase = true;
+
+                    startPlay();
+                }
+            }
+
+            @Override public void onError(Throwable e) {
+                Log.e(TAG, "Error: " + e.getMessage());
+                e.printStackTrace();
+                offlineTextLayout.stopProgress();
+                CustomToast.showInCenter(getApplicationContext(), e.getMessage());
+            }
+
+            @Override public void onNext(Bitmap bitmap) {
+                Log.d(TAG, "On next");
+                this.bitmap = bitmap;
+            }
+        };
+    }
+    /*
     private Observer<Bitmap> getRefreshOfflineObserver() {
 
         return new Observer<Bitmap>() {
@@ -1305,6 +1392,7 @@ public class VideoActivity extends ParentAppCompatActivity
             }
         };
     }
+    */
 
     private Bitmap reloadSnaopshot(String cameraId) throws EvercamException {
         Snapshot snapshot = Snapshot.record(cameraId, "Android client");
@@ -1404,14 +1492,6 @@ public class VideoActivity extends ParentAppCompatActivity
                 bundle.putString("RTSP_Stream_Played", "Successfully played RTSP stream");
                 mFirebaseAnalytics.logEvent("RTSP_Streaming", bundle);
 
-                /*
-                //And send to Google Analytics
-                EvercamPlayApplication.sendEventAnalytics(VideoActivity.this,
-                        R.string.category_streaming_rtsp,
-                        R.string.action_streaming_rtsp_success,
-                        R.string.label_streaming_rtsp_success);
-                */
-
                 StreamFeedbackItem successItem = new StreamFeedbackItem(VideoActivity
                         .this, AppData.defaultUser.getUsername(), true);
                 successItem.setCameraId(evercamCamera.getCameraId());
@@ -1440,11 +1520,7 @@ public class VideoActivity extends ParentAppCompatActivity
                 Bundle bundle = new Bundle();
                 bundle.putString("RTSP_Stream_Failed", "Failed to play RTSP stream while the camera is online and has a valid RTSP URL.");
                 mFirebaseAnalytics.logEvent("RTSP_Streaming", bundle);
-/*
-                EvercamPlayApplication.sendEventAnalytics(VideoActivity.this, R.string
-                        .category_streaming_rtsp, R.string.action_streaming_rtsp_failed, R.string
-                        .label_streaming_rtsp_failed);
-                */
+
                 StreamFeedbackItem failedItem = new StreamFeedbackItem
                         (VideoActivity.this, AppData.defaultUser.getUsername(),
                                 false);
@@ -1613,12 +1689,7 @@ public class VideoActivity extends ParentAppCompatActivity
         Bundle bundle = new Bundle();
         bundle.putString("JPG_Stream_Played", "Successfully played JPG stream");
         mFirebaseAnalytics.logEvent("JPG_Streaming", bundle);
-/*
-        EvercamPlayApplication.sendEventAnalytics(VideoActivity.this,
-                R.string.category_streaming_jpg,
-                R.string.action_streaming_jpg_success,
-                R.string.label_streaming_jpg_success);
-        */
+
         StreamFeedbackItem successItem = new StreamFeedbackItem
                 (VideoActivity.this, AppData.defaultUser.getUsername
                         (), true);

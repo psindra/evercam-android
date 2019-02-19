@@ -17,6 +17,8 @@
     <color name="evercam_blue_pressed">#337ab7</color>
     <!-- The dark background color for AppCompat Dark Theme -->
     <color name="dark_background">#303030</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
 
     <!-- Material Theme colors-->
     <color name="colorPrimary">@color/evercam_dark_gray</color>

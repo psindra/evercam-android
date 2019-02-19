@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.github.johnpersano.supertoasts.SuperToast;
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperToast;
 
 public class CustomToast {
     public static void showInCenter(Context context, String message) {
@@ -33,7 +34,7 @@ public class CustomToast {
 
     public static void showInCenterExtraLong(Context context, int message) {
         SuperToast superToast = new SuperToast(context);
-        superToast.setDuration(SuperToast.Duration.EXTRA_LONG);
+        superToast.setDuration(Style.DURATION_VERY_LONG);
         superToast.setText(context.getString(message));
         superToast.setGravity(Gravity.CENTER, 0, 0);
         superToast.show();

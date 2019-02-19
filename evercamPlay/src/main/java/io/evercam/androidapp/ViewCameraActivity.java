@@ -297,15 +297,15 @@ public class ViewCameraActivity extends ParentAppCompatActivity implements OnMap
 
         if (!evercamCamera.getVendor().equals(getString(R.string.vendor_other))) {
             //Update vendor logo when vendor is selected
-            Picasso.with(this).load(Vendor.getLogoUrl(vendorId)
-            ).placeholder(android.R.color.transparent).into(vendorLogoImageView);
+            Picasso.get().load(Vendor.getLogoUrl(vendorId))
+                    .placeholder(android.R.color.transparent)
+                    .into(vendorLogoImageView);
 
         }else{
             vendorLogoImageView.setImageResource(android.R.color.transparent);
         }
 
-        Picasso.with(this)
-                .load(Model.getThumbnailUrl(vendorId, evercamCamera.getModelId()))
+        Picasso.get().load(Model.getThumbnailUrl(vendorId, evercamCamera.getModelId()))
                 .placeholder(R.drawable.thumbnail_placeholder)
                 .into(modelThumbnailImageView);
 
