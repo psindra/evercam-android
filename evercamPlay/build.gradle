@@ -122,7 +122,7 @@ dependencies {
     implementation 'io.intercom.android:intercom-sdk:5.+'
     implementation 'com.google.android.exoplayer:exoplayer:r2.2.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-    implementation files('libs/evercam-java-1.1.9-android.jar')
+    implementation files('libs/evercam-java-1.2.0-android.jar')
     //new Approach
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     implementation 'com.squareup.okhttp3:okhttp:3.13.1'

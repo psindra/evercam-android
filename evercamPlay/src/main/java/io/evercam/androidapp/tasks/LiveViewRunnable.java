@@ -36,7 +36,7 @@ public class LiveViewRunnable implements Runnable {
 
     private final static String TAG = "LiveViewRunnable";
     private final String HOST = "wss://media.evercam.io/socket/websocket";
-    private final String ENVELOPE_KEY_TIMESTAMP = "timestamp";
+    private final String ENVELOPE_KEY_TIMESTAMP = "iso_timestamp";
     private final String ENVELOPE_KEY_IMAGE = "image";
     private final String EVENT_SNAPSHOT_TAKEN = "snapshot-taken";
 
