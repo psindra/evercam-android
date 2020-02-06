@@ -122,7 +122,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/input_layout_ip"
                             style="@style/TextInputLayoutLight">
 
@@ -130,7 +130,7 @@
                                 android:id="@+id/external_ip_float_edit_text"
                                 style="@style/SingleLineEditText.Text"
                                 android:hint="@string/public_ip" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <ImageView
                             android:id="@+id/clear_host_image_button"
@@ -150,7 +150,7 @@
 
                         <RelativeLayout style="@style/PortLineLayout">
 
-                            <android.support.design.widget.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/input_layout_http"
                                 style="@style/TextInputLayoutLight">
 
@@ -158,7 +158,7 @@
                                     android:id="@+id/http_float_edit_text"
                                     style="@style/SingleLineEditText.Number"
                                     android:hint="@string/add_camera_http_port" />
-                            </android.support.design.widget.TextInputLayout>
+                            </com.google.android.material.textfield.TextInputLayout>
 
                             <RelativeLayout style="@style/AddEditCameraStatus.WithinTextInputLayout">
 
@@ -184,7 +184,7 @@
                                 style="@style/SingleCharacterText"
                                 android:text="@string/slash" />
 
-                            <android.support.design.widget.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/input_layout_snapshot_path"
                                 style="@style/TextInputLayoutLight"
                                 android:hint="@string/add_camera_snapshot_path">
@@ -192,7 +192,7 @@
                                 <EditText
                                     android:id="@+id/snapshot_path_float_edit_text"
                                     style="@style/SingleLineEditText.Text" />
-                            </android.support.design.widget.TextInputLayout>
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -200,7 +200,7 @@
 
                         <RelativeLayout style="@style/PortLineLayout">
 
-                            <android.support.design.widget.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/input_layout_rtsp"
                                 style="@style/TextInputLayoutLight">
 
@@ -208,7 +208,7 @@
                                     android:id="@+id/rtsp_float_edit_text"
                                     style="@style/SingleLineEditText.Number"
                                     android:hint="@string/add_camera_rtsp_port" />
-                            </android.support.design.widget.TextInputLayout>
+                            </com.google.android.material.textfield.TextInputLayout>
 
                             <RelativeLayout style="@style/AddEditCameraStatus.WithinTextInputLayout">
 
@@ -233,7 +233,7 @@
                                 style="@style/SingleCharacterText"
                                 android:text="@string/slash" />
 
-                            <android.support.design.widget.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/input_layout_rtsp_path"
                                 style="@style/TextInputLayoutLight"
                                 android:hint="@string/add_camera_stream_path">
@@ -241,7 +241,7 @@
                                 <EditText
                                     android:id="@+id/rtsp_path_float_edit_text"
                                     style="@style/SingleLineEditText.Text" />
-                            </android.support.design.widget.TextInputLayout>
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -272,7 +272,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/input_layout_cam_username"
                             android:layout_width="0dp"
                             android:layout_weight="0.47"
@@ -283,14 +283,14 @@
                             <EditText
                                 android:id="@+id/cam_username_float_edit_text"
                                 style="@style/SingleLineEditText.Text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
                             style="@style/SingleCharacterText"
                             android:layout_marginTop="20dp"
                             android:text="@string/colon" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_weight="0.49"
                             app:errorTextAppearance="@style/EditTextError"
@@ -301,7 +301,7 @@
                             <EditText
                                 android:id="@+id/cam_password_float_edit_text"
                                 style="@style/SingleLineEditText.Text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <Button
@@ -361,7 +361,7 @@
                     android:layout_marginRight="50sp"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/input_layout_camera_name"
                         style="@style/TextInputLayoutLight">
 
@@ -369,7 +369,7 @@
                             android:id="@+id/cam_name_float_edit_text"
                             style="@style/SingleLineEditText.Text"
                             android:hint="@string/hint_name_your_camera" />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
                         android:id="@+id/create_camera_button"
