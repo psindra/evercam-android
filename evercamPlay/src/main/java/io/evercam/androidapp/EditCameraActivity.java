@@ -81,8 +81,8 @@ public class EditCameraActivity extends AddCameraParentActivity {
         Bundle bundle = getIntent().getExtras();
         // Edit Camera
         if (bundle != null && bundle.containsKey(Constants.KEY_IS_EDIT)) {
-            EvercamPlayApplication.sendScreenAnalytics(this,
-                    getString(R.string.screen_edit_camera));
+            /*EvercamPlayApplication.sendScreenAnalytics(this,
+                    getString(R.string.screen_edit_camera));*/
             cameraEdit = VideoActivity.evercamCamera;
         } 
 

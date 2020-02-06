@@ -9,9 +9,9 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+//import com.google.android.gms.analytics.GoogleAnalytics;
+//import com.google.android.gms.analytics.HitBuilders;
+//import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
@@ -20,7 +20,6 @@ import io.evercam.androidapp.utils.PropertyReader;
 import io.intercom.android.sdk.Intercom;
 
 public class EvercamPlayApplication extends MultiDexApplication {
-    private static final String PROPERTY_ID = "UA-52483995-1";
 
     private static final String TAG = "EvercamPlayApplication";
 
@@ -31,7 +30,7 @@ public class EvercamPlayApplication extends MultiDexApplication {
         GLOBAL_TRACKER, // Tracker used by all the apps from a company.
     }
 
-    HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
+//    HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
 
     public EvercamPlayApplication() {
         super();
@@ -54,7 +53,7 @@ public class EvercamPlayApplication extends MultiDexApplication {
 //            API.URL = "http://proxy.evr.cm:9292/v1/";
     }
 
-    synchronized Tracker getTracker(TrackerName trackerId) {
+/*    synchronized Tracker getTracker(TrackerName trackerId) {
         if (!mTrackers.containsKey(trackerId)) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             Tracker t = (trackerId == TrackerName.APP_TRACKER) ? analytics.newTracker(R.xml
@@ -71,12 +70,12 @@ public class EvercamPlayApplication extends MultiDexApplication {
         return tracker;
     }
 
-    /**
+    *//**
      * Send screen view to Google Analytics from activity with screen name.
      *
      * @param activity
      * @param screenName The screen name that shows in Google dashboard.
-     */
+     *//*
     public static void sendScreenAnalytics(Activity activity, String screenName) {
         Tracker tracker = getAppTracker(activity);
         tracker.setScreenName(screenName);
@@ -114,7 +113,7 @@ public class EvercamPlayApplication extends MultiDexApplication {
                     .toString().replace("io.evercam.androidapp", e.toString())).setFatal(false).build
                     ());
         }
-    }
+    }*/
 
     public DataSource.Factory buildDataSourceFactory(DefaultBandwidthMeter bandwidthMeter) {
         return new DefaultDataSourceFactory(this, bandwidthMeter,

@@ -394,8 +394,8 @@ public class ModelSelectorFragment extends Fragment {
             try {
                 return Model.getAllByVendorId(vendorId);
             } catch (EvercamException e) {
-                EvercamPlayApplication.sendCaughtException(getActivity(),
-                        e.toString() + " " + "with vendor id: " + vendorId);
+               /* EvercamPlayApplication.sendCaughtException(getActivity(),
+                        e.toString() + " " + "with vendor id: " + vendorId);*/
                 Log.e(TAG, e.toString());
             }
             return null;

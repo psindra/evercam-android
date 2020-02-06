@@ -30,6 +30,7 @@ public class RecordingWebView extends BaseWebView {
         getSettings().setBuiltInZoomControls(true);
         getSettings().setDisplayZoomControls(false);
 
+
         //Append custom user agent
         String userAgent = getSettings().getUserAgentString() + " "
                 + webActivity.getString(R.string.user_agent_suffix);

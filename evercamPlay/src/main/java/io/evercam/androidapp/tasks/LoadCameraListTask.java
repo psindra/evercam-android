@@ -33,8 +33,8 @@ public class LoadCameraListTask extends AsyncTask<Void, Boolean, Boolean> {
         if (user != null) {
             API.setUserKeyPair(user.getApiKey(), user.getApiId());
         } else {
-            EvercamPlayApplication.sendCaughtException(camerasActivity,
-                    camerasActivity.getString(R.string.exception_error_empty_user));
+            /*EvercamPlayApplication.sendCaughtException(camerasActivity,
+                    camerasActivity.getString(R.string.exception_error_empty_user));*/
             CustomedDialog.showUnexpectedErrorDialog(camerasActivity);
             cancel(true);
         }

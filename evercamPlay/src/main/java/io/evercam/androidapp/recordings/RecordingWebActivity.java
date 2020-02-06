@@ -2,8 +2,10 @@ package io.evercam.androidapp.recordings;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -63,7 +65,6 @@ public class RecordingWebActivity extends WebActivity {
     private class CloudRecordingWebViewClient extends BaseWebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.e(TAG, "shouldOverrideUrlLoading " + url);
 
             if (url.startsWith("data:image/jpeg;")) {
                 String dataString = Snapshot.getBase64DataStringFrom(url);
@@ -78,5 +79,17 @@ public class RecordingWebActivity extends WebActivity {
 
             return super.shouldOverrideUrlLoading(view, url);
         }
+
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                Log.v("shouldOverrideUrl",request.getUrl().toString());
+//                Log.v("shouldOverrideUrl",request.getUrl().toString());
+//                String test = request.getUrl().toString();
+//            }
+//
+//            return super.shouldOverrideUrlLoading(view, request);
+//        }
     }
 }

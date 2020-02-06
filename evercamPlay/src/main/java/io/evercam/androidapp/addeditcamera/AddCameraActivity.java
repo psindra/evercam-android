@@ -106,7 +106,7 @@ public class AddCameraActivity extends AddCameraParentActivity {
 
         initDiscoveredCamera();
 
-        EvercamPlayApplication.sendScreenAnalytics(this, getString(R.string.screen_add_camera));
+        /*EvercamPlayApplication.sendScreenAnalytics(this, getString(R.string.screen_add_camera));*/
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.add_camera_view_flipper);
         mProgressBar = (ProgressBar) findViewById(R.id.add_camera_progress_bar);

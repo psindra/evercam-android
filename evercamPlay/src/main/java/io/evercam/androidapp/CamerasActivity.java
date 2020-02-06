@@ -237,7 +237,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
                     new CamerasCheckInternetTask(CamerasActivity.this, InternetCheckType.RESTART).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
                 } catch (RejectedExecutionException e) {
-                    EvercamPlayApplication.sendCaughtExceptionNotImportant(activity, e);
+                    /*EvercamPlayApplication.sendCaughtExceptionNotImportant(activity, e);*/
                 }
             }
             usernameOnStop = "";
@@ -473,7 +473,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
 
             }catch (Exception e){
                 Log.e(TAG, e.toString());
-                EvercamPlayApplication.sendCaughtException(this, e);
+                /*EvercamPlayApplication.sendCaughtException(this, e);*/
             }
 
         } else if (view == mNavScanLayout) {
@@ -641,7 +641,7 @@ public class CamerasActivity extends ParentAppCompatActivity implements
             }
         } catch (Exception e) {
             Log.e(TAG, e.toString());
-            EvercamPlayApplication.sendCaughtException(this, e);
+            /*EvercamPlayApplication.sendCaughtException(this, e);*/
         }
     }
 

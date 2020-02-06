@@ -97,7 +97,7 @@ public class AddCameraTask extends AsyncTask<Void, Boolean, EvercamCamera> {
                                 evercamCamera.getCameraId()));
             } catch (JSONException e) {
                 e.printStackTrace();
-                EvercamPlayApplication.sendCaughtException(activity, e);
+                /*EvercamPlayApplication.sendCaughtException(activity, e);*/
             }
 
             /**
@@ -234,7 +234,7 @@ public class AddCameraTask extends AsyncTask<Void, Boolean, EvercamCamera> {
         } catch (EvercamException e) {
             errorMessage = e.getMessage();
             Log.e(TAG, "add camera to evercam: " + e.getMessage());
-            EvercamPlayApplication.sendCaughtException(activity, e);
+            /*EvercamPlayApplication.sendCaughtException(activity, e);*/
             return null;
         }
     }

@@ -503,7 +503,7 @@ public class VideoActivity extends ParentAppCompatActivity
         } catch (Exception e) {
             // Catch this exception and send by Google Analytics
             // This should not influence user using the app
-            EvercamPlayApplication.sendCaughtException(this, e);
+            /*EvercamPlayApplication.sendCaughtException(this, e);*/
         }
     }
 

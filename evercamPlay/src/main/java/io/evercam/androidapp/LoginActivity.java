@@ -251,8 +251,8 @@ public class LoginActivity extends ParentAppCompatActivity {
                 if (errorMessage != null) {
                     CustomToast.showInCenter(getApplicationContext(), errorMessage);
                 } else {
-                    EvercamPlayApplication.sendCaughtException(LoginActivity.this,
-                            getString(R.string.exception_error_login) + " " + unExpectedMessage);
+                   /* EvercamPlayApplication.sendCaughtException(LoginActivity.this,
+                            getString(R.string.exception_error_login) + " " + unExpectedMessage);*/
                     if (!LoginActivity.this.isFinishing()) {
                         CustomedDialog.showUnexpectedErrorDialog(LoginActivity.this);
                     }
