@@ -6,7 +6,7 @@
 
     <!-- Login form -->
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -90,6 +90,6 @@
             android:fontFamily="sans-serif"/>
 
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
 </merge>

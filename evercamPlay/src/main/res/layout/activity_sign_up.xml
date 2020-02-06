@@ -77,7 +77,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/evercam_logo_layout">
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal">
@@ -235,6 +235,6 @@
 
 
             </LinearLayout>
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
     </ScrollView>
 </RelativeLayout>

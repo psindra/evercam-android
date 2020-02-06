@@ -1,7 +1,7 @@
 package io.evercam.androidapp.publiccameras;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import io.evercam.androidapp.R;
 import io.evercam.androidapp.WebActivity;
