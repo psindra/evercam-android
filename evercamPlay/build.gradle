@@ -17,7 +17,7 @@ android {
     defaultConfig {
         applicationId "io.evercam.androidapp"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
         //Enable multiDex, but the better solution is to reduce method number
         multiDexEnabled = true
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
@@ -91,7 +91,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'com.mixpanel.android:mixpanel-android:5.+'
 
-    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
+//    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
     implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-core:17.2.2'
@@ -154,7 +154,7 @@ apply plugin: 'com.google.gms.google-services'
 
 def props = new Properties()
 
-props.load(new FileInputStream(rootProject.file("release.properties.sample")))
+props.load(new FileInputStream(rootProject.file("release.properties")))
 
 android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
 
