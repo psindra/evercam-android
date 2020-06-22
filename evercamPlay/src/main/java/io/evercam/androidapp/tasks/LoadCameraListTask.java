@@ -9,8 +9,6 @@ import io.evercam.API;
 import io.evercam.Camera;
 import io.evercam.EvercamException;
 import io.evercam.androidapp.CamerasActivity;
-import io.evercam.androidapp.EvercamPlayApplication;
-import io.evercam.androidapp.R;
 import io.evercam.androidapp.custom.CustomedDialog;
 import io.evercam.androidapp.dal.DbCamera;
 import io.evercam.androidapp.dto.AppData;
@@ -53,7 +51,7 @@ public class LoadCameraListTask extends AsyncTask<Void, Boolean, Boolean> {
             ArrayList<Camera> cameras = Camera.getAll(user.getUsername(), true, false);
 
             ArrayList<EvercamCamera> evercamCameras = new ArrayList<>();
-            for (io.evercam.Camera camera : cameras) {
+            for (Camera camera : cameras) {
                 EvercamCamera evercamCamera = new EvercamCamera().convertFromEvercam(camera);
 
                 evercamCameras.add(evercamCamera);

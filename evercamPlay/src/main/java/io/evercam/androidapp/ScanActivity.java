@@ -25,8 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.badoo.mobile.util.WeakHandler;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import io.evercam.unirest.http.Unirest;
+import io.evercam.unirest.http.exceptions.UnirestException;
 
 import java.io.InputStream;
 import java.util.ArrayList;

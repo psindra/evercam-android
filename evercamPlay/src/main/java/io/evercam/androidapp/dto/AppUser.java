@@ -1,5 +1,7 @@
 package io.evercam.androidapp.dto;
 
+import org.json.JSONException;
+
 import io.evercam.EvercamException;
 import io.evercam.User;
 
@@ -22,13 +24,17 @@ public class AppUser {
     public AppUser(User user) throws EvercamException {
         setUsername(user.getUsername());
         setEmail(user.getEmail());
-        setFirstName(user.getFirstName());
-        setLastName(user.getLastName());
         setCountry(user.getCountry());
-        setIntercom_hmac_android(user.get_intercom_hmac_android());
+        try {
+            setFirstName(user.getFirstName());
+            setLastName(user.getLastName());
+            setIntercom_hmac_android(user.get_intercom_hmac_android());
+        } catch (JSONException e) {
+            throw new EvercamException(e);
+        }
     }
 
-    public String getIntercom_hmac_android(){
+    public String getIntercom_hmac_android() {
         return intercom_hmac_android;
     }
 
@@ -52,7 +58,7 @@ public class AppUser {
         this.country = country;
     }
 
-    public void setIntercom_hmac_android(String intercom_hmac_android){
+    public void setIntercom_hmac_android(String intercom_hmac_android) {
         this.intercom_hmac_android = intercom_hmac_android;
     }
 

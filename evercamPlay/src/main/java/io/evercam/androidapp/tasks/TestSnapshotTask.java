@@ -16,7 +16,6 @@ import io.evercam.androidapp.addeditcamera.AddCameraActivity;
 import io.evercam.androidapp.custom.CustomProgressDialog;
 import io.evercam.androidapp.custom.CustomedDialog;
 import io.evercam.androidapp.dto.AppData;
-import io.evercam.androidapp.feedback.TestSnapshotFeedbackItem;
 
 public class TestSnapshotTask extends AsyncTask<Void, Void, Bitmap> {
     private final String TAG = "TestSnapshotTask";

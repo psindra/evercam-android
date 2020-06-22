@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -366,7 +367,12 @@ public class CustomedDialog {
 
         String selectedItem = fragment.getString(R.string.read_only);
 
-        Right rights = EvercamObject.getRightsFrom(shareInterface);
+        Right rights = null;
+        try {
+            rights = EvercamObject.getRightsFrom(shareInterface);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if (rights != null && rights.isFullRight()) {
             selectedItem = fragment.getString(R.string.full_rights);
         }
@@ -404,7 +410,11 @@ public class CustomedDialog {
                             String LoggedInEmail = defaultUser.getEmail();
                             String currentUserEmail = ((CameraShare) shareInterface).getUserEmail();
                             if (LoggedInEmail.equals(currentUserEmail)){
-                                CustomedDialog.showCannotChangeRightsDialog(activity, shareInterface).show();
+                                try {
+                                    CustomedDialog.showCannotChangeRightsDialog(activity, shareInterface).show();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }else{
                                 newRightStatus.updateOnShare(shareInterface);
                             }
@@ -433,8 +443,12 @@ public class CustomedDialog {
             positiveButtonTextId = R.string.revoke;
             messageTextId = R.string.msg_confirm_revoke_share_request;
         } else if (shareInterface instanceof CameraShare) {
-            if (((CameraShare) shareInterface).getUserId().equals(AppData.defaultUser.getUsername())) {
-                messageTextId = R.string.msg_confirm_remove_self;
+            try {
+                if (((CameraShare) shareInterface).getUserId().equals(AppData.defaultUser.getUsername())) {
+                    messageTextId = R.string.msg_confirm_remove_self;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
 
@@ -447,7 +461,7 @@ public class CustomedDialog {
     }
 
     public static AlertDialog showCannotChangeRightsDialog(Activity activity,
-                                                          final CameraShareInterface shareInterface) {
+                                                          final CameraShareInterface shareInterface) throws JSONException {
 //        int positiveButtonTextId = R.string.ok;
         int messageTextId = R.string.msg_cannot_change_rights;
 

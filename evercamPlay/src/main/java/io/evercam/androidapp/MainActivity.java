@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.IOException;
@@ -25,8 +25,7 @@ import io.evercam.androidapp.tasks.CheckKeyExpirationTask;
 import io.evercam.androidapp.utils.Constants;
 import io.evercam.androidapp.utils.DataCollector;
 import io.evercam.androidapp.utils.PrefsManager;
-import io.fabric.sdk.android.Fabric;
-import io.intercom.android.sdk.Intercom;
+
 
 /*
  * Main starting activity. 
@@ -60,7 +59,7 @@ public class MainActivity extends ParentAppCompatActivity {
             Log.i(TAG, "Google Play Services is not available");
         }
 
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
 
         setContentView(R.layout.activity_main);
 

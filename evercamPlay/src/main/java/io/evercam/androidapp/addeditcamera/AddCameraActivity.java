@@ -29,7 +29,6 @@ import io.evercam.EvercamException;
 import io.evercam.Model;
 import io.evercam.Vendor;
 import io.evercam.androidapp.EditCameraActivity;
-import io.evercam.androidapp.EvercamPlayApplication;
 import io.evercam.androidapp.R;
 import io.evercam.androidapp.custom.CustomToast;
 import io.evercam.androidapp.custom.CustomedDialog;

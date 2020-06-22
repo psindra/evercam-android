@@ -23,7 +23,6 @@ import io.evercam.androidapp.custom.CustomToast;
 import io.evercam.androidapp.custom.CustomedDialog;
 import io.evercam.androidapp.dto.AppData;
 import io.evercam.androidapp.dto.AppUser;
-import io.evercam.androidapp.feedback.NewUserFeedbackItem;
 import io.evercam.androidapp.permission.Permission;
 import io.evercam.androidapp.tasks.CheckInternetTask;
 import io.evercam.androidapp.utils.Constants;

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 import io.evercam.CameraShare;
@@ -50,33 +52,35 @@ public class ShareListArrayAdapter extends ArrayAdapter<CameraShareInterface> {
         statusTextView.setText("");
 
         CameraShareInterface cameraShareInterface = mCameraShareList.get(position);
+            try {
+                if (cameraShareInterface != null) {
+                    Right rights = EvercamObject.getRightsFrom(cameraShareInterface);
 
-        if (cameraShareInterface != null) {
-            Right rights = EvercamObject.getRightsFrom(cameraShareInterface);
+                    if (cameraShareInterface instanceof CameraShare) {
+                        fullNameTextView.setText(((CameraShare) cameraShareInterface).getFullName());
+                        emailTextView.setText(((CameraShare) cameraShareInterface).getUserEmail());
+                        rights = ((CameraShare) cameraShareInterface).getRights();
+                    } else if (cameraShareInterface instanceof CameraShareRequest) {
+                        fullNameTextView.setText(((CameraShareRequest) cameraShareInterface).getEmail());
+                        emailTextView.setText(R.string.pending);
+                        rights = ((CameraShareRequest) cameraShareInterface).getRights();
+                    } else if (cameraShareInterface instanceof CameraShareOwner) {
+                        CameraShareOwner owner = (CameraShareOwner) cameraShareInterface;
+                        fullNameTextView.setText(owner.getFullName());
+                        emailTextView.setText(owner.getEmail());
+                        statusTextView.setText(R.string.owner);
+                        boolean isOwner = owner.getUsername().equals(AppData.defaultUser.getUsername());
+                        youTextView.setVisibility(isOwner ? View.VISIBLE : View.GONE);
+                    }
 
-            if (cameraShareInterface instanceof CameraShare) {
-                fullNameTextView.setText(((CameraShare) cameraShareInterface).getFullName());
-                emailTextView.setText(((CameraShare) cameraShareInterface).getUserEmail());
-                rights = ((CameraShare) cameraShareInterface).getRights();
-            } else if (cameraShareInterface instanceof CameraShareRequest) {
-                fullNameTextView.setText(((CameraShareRequest) cameraShareInterface).getEmail());
-                emailTextView.setText(R.string.pending);
-                rights = ((CameraShareRequest) cameraShareInterface).getRights();
-            } else if (cameraShareInterface instanceof CameraShareOwner) {
-                CameraShareOwner owner = (CameraShareOwner) cameraShareInterface;
-                fullNameTextView.setText(owner.getFullName());
-                emailTextView.setText(owner.getEmail());
-                statusTextView.setText(R.string.owner);
-                boolean isOwner = owner.getUsername().equals(AppData.defaultUser.getUsername());
-                youTextView.setVisibility(isOwner ? View.VISIBLE : View.GONE);
+                    if (rights != null) {
+                        if (rights.isFullRight()) statusTextView.setText(R.string.full_rights);
+                        else if (rights.isReadOnly()) statusTextView.setText(R.string.read_only);
+                    }
+                }
+            }catch (JSONException e){
+
             }
-
-            if (rights != null) {
-                if (rights.isFullRight()) statusTextView.setText(R.string.full_rights);
-                else if (rights.isReadOnly()) statusTextView.setText(R.string.read_only);
-            }
-        }
-
         return view;
     }
 

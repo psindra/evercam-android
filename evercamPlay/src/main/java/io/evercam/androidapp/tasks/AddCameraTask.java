@@ -1,6 +1,5 @@
 package io.evercam.androidapp.tasks;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,10 +17,8 @@ import io.evercam.CameraDetail;
 import io.evercam.EvercamException;
 import io.evercam.Snapshot;
 import io.evercam.androidapp.EditCameraActivity;
-import io.evercam.androidapp.EvercamPlayApplication;
 import io.evercam.androidapp.ParentAppCompatActivity;
 import io.evercam.androidapp.R;
-import io.evercam.androidapp.addeditcamera.AddCameraActivity;
 import io.evercam.androidapp.custom.CustomProgressDialog;
 import io.evercam.androidapp.custom.CustomToast;
 import io.evercam.androidapp.custom.CustomedDialog;

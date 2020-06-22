@@ -12,7 +12,6 @@ import java.util.concurrent.Executors;
 import io.evercam.Vendor;
 import io.evercam.androidapp.ScanActivity;
 import io.evercam.androidapp.dto.AppData;
-import io.evercam.androidapp.feedback.ScanFeedbackItem;
 import io.evercam.androidapp.utils.Commons;
 import io.evercam.androidapp.utils.NetInfo;
 import io.evercam.network.EvercamDiscover;

@@ -58,7 +58,7 @@ public class CameraListSyncAdapter extends AbstractThreadedSyncAdapter {
                 API.setUserKeyPair(originalApiKey, originalApiId);
 
                 ArrayList<EvercamCamera> evercamCameras = new ArrayList<>();
-                for (io.evercam.Camera camera : cameras) {
+                for (Camera camera : cameras) {
                     EvercamCamera evercamCamera = new EvercamCamera().convertFromEvercam(camera);
 
                     evercamCameras.add(evercamCamera);

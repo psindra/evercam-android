@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,7 +140,11 @@ public class SharingListFragment extends ListFragment {
             for (CameraShareInterface shareInterface : mShareList) {
                 String userId = "";
                 if (shareInterface instanceof CameraShare) {
-                    userId = ((CameraShare) shareInterface).getUserId();
+                    try {
+                        userId = ((CameraShare) shareInterface).getUserId();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 if (userId.equals(username)) userExists = true;
@@ -153,7 +159,11 @@ public class SharingListFragment extends ListFragment {
         if (mShareList.size() > 0) {
             for (CameraShareInterface shareInterface : mShareList) {
                 if (shareInterface instanceof CameraShare) {
-                    usernameList.add(((CameraShare) shareInterface).getUserId());
+                    try {
+                        usernameList.add(((CameraShare) shareInterface).getUserId());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

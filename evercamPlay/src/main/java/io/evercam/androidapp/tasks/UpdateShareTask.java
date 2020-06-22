@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONException;
+
 import io.evercam.CameraShare;
 import io.evercam.CameraShareInterface;
 import io.evercam.CameraShareRequest;
@@ -100,6 +102,8 @@ public class UpdateShareTask extends AsyncTask<Void, Void, Boolean> {
                 return CameraShareRequest.delete(cameraId, userEmail);
             }
         } catch (EvercamException e) {
+            errorMessage = e.getMessage();
+        } catch (JSONException e) {
             errorMessage = e.getMessage();
         }
 

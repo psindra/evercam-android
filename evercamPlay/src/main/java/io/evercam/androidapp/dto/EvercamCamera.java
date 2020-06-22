@@ -1,7 +1,8 @@
 package io.evercam.androidapp.dto;
 
-import android.location.Location;
 import android.util.Log;
+
+import org.json.JSONException;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -61,7 +62,7 @@ public class EvercamCamera {
 
     }
 
-    public EvercamCamera convertFromEvercam(io.evercam.Camera camera) {
+    public EvercamCamera convertFromEvercam(Camera camera) {
         this.camera = camera;
         try {
             //location":{"lng":-6.0426519,"lat":52.9679717},
@@ -96,7 +97,11 @@ public class EvercamCamera {
             externalHttp = camera.getExternalHttpPort();
             externalRtsp = camera.getExternalRtspPort();
             thumbnailUrl = camera.getThumbnailUrl();
-            hlsUrl = camera.getProxyUrl().getHls();
+            try {
+                hlsUrl = camera.getProxyUrl().getHls();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             /*latitude        =       camera.getLocation().getLat();
             longitude       =       camera.getLocation().getLng();*/

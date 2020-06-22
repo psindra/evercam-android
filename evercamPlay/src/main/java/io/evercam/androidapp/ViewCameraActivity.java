@@ -26,10 +26,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import io.evercam.unirest.http.HttpResponse;
+import io.evercam.unirest.http.JsonNode;
+import io.evercam.unirest.http.Unirest;
+import io.evercam.unirest.http.exceptions.UnirestException;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
